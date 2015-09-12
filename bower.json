@@ -19,7 +19,7 @@
     "**/.*"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#^1.0.0"
+    "polymer": "Polymer/polymer#^1.0.0",
     "d3": "~3.5.6"
   }
 }
