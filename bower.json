@@ -4,7 +4,7 @@
   "authors": [
     "collaborne"
   ],
-  "description": "Web component (Polymer 1.0) that provides a D3 based progress meter",
+  "description": "Web component providing a D3 based progress meter (Polymer 1.0)",
   "main": "d3-progress-meter.html",
   "keywords": [
     "web-components",
