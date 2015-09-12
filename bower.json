@@ -1,0 +1,25 @@
+{
+  "name": "d3-progress-meter",
+  "version": "0.0.1",
+  "authors": [
+    "collaborne"
+  ],
+  "description": "Web component (Polymer 1.0) that provides a D3 based progress meter",
+  "main": "d3-progress-meter.html",
+  "keywords": [
+    "web-components",
+    "polymer",
+    "d3",
+    "chart",
+    "progress"
+  ],
+  "license": "BSD",
+  "homepage": "https://github.com/collaborne/d3-progress-meter",
+  "ignore": [
+    "**/.*"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.0.0"
+    "d3": "~3.5.6"
+  }
+}
