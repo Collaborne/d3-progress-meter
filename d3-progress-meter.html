@@ -96,7 +96,7 @@
 			
 			var host = this;
 			var i = d3.interpolate(this.progress, this.value);
-			d3.transition().tween('progress', function() {
+			d3.select(this).transition().tween(this.$.progress, function() {
 				return function(t) {
 					host.progress = i(t);
 					host.$.progress.setAttribute('d', host.arc.endAngle(2 * Math.PI * host.progress)());
