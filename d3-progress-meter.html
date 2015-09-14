@@ -17,8 +17,11 @@
 				/* var(--paper-green-500) */
 				fill: #4caf50;
 			}
-			#text {
+			#currentText,#totalText,#goalText {
 				font-family: Arial, sans-serif;
+			}
+			#currentText {
+				font-weight: bold;
 			}
 		</style>
 		
@@ -27,7 +30,9 @@
 				<g>
 					<path id="background"></path>
 					<path id="progress"></path>
-					<text id="text" dy=".35em" text-anchor="middle"></text>
+					<text id="currentText" dy="-.2em" text-anchor="middle">[[currentText]]</text>
+					<text id="totalText" dy="1.5em" text-anchor="middle">[[totalText]]</text>
+					<text id="goalText" dy="2.75em" text-anchor="middle">(Goal)</text>
 				</g>
 			</g>
 		</svg>
@@ -37,8 +42,6 @@
 	
 <script>
 (function() {
-
-	var formatPercent = d3.format('.0%');
 
 	Polymer({
 		is: 'd3-progress-meter',
@@ -52,10 +55,12 @@
 				value: 100,
 				observer: '_radiusChanged'
 			},
-			value: {
+			percentage: {
 				type: Number,
-				observer: '_valueChanged'
+				observer: '_percentageChanged'
 			},
+			currentText: String,
+			totalText: String,
 			diameter: {
 				type: Number,
 				computed: '_computeDiameter(radius)'
@@ -74,10 +79,10 @@
 		},
 		_radiusChanged: function(oldVal, newVal) {
 			this._onRadiusChanged();
-			this._onValueChanged();
+			this._onPercentageChanged();
 		},
-		_valueChanged: function(oldVal, newVal) {
-			this._onValueChanged();
+		_percentageChanged: function(oldVal, newVal) {
+			this._onPercentageChanged();
 		},
 		_onRadiusChanged: function() {
 			this.arc = d3.svg.arc()
@@ -85,22 +90,23 @@
 						.innerRadius(9/10 * this.radius)
 						.outerRadius(this.radius);
 	
-			this.$.text.style.fontSize = this.radius/2 + 'px';
+			this.$.currentText.style.fontSize = this.radius/2 + 'px';
+			this.$.totalText.style.fontSize = this.radius/5 + 'px';
+			this.$.goalText.style.fontSize = this.radius/5 + 'px';
 			this.$.background.setAttribute('d', this.arc.endAngle(2 * Math.PI)());
 		},
-		_onValueChanged: function() {
-			if (typeof this.value == 'undefined') {
+		_onPercentageChanged: function() {
+			if (typeof this.percentage == 'undefined') {
 				return;
 			}
-			this.value = Math.min(1, Math.max(0, this.value));
+			this.percentage = Math.min(1, Math.max(0, this.percentage));
 			
 			var host = this;
-			var i = d3.interpolate(this.progress, this.value);
+			var i = d3.interpolate(this.progress, this.percentage);
 			d3.select(this).transition().tween(this.$.progress, function() {
 				return function(t) {
 					host.progress = i(t);
 					host.$.progress.setAttribute('d', host.arc.endAngle(2 * Math.PI * host.progress)());
-					host.$.text.textContent = formatPercent(host.progress);
 				};
 			});
 		}
