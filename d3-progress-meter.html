@@ -107,14 +107,13 @@
 			}
 			this.percentage = Math.min(1, Math.max(0, this.percentage));
 			
-			var host = this;
 			var i = d3.interpolate(this.progress, this.percentage);
 			d3.select(this).transition().tween(this.$.progress, function() {
 				return function(t) {
-					host.progress = i(t);
-					host.$.progress.setAttribute('d', host.arc.endAngle(2 * Math.PI * host.progress)());
-				};
-			});
+					this.progress = i(t);
+					this.$.progress.setAttribute('d', this.arc.endAngle(2 * Math.PI * this.progress)());
+				}.bind(this);
+			}.bind(this));
 		}
 	});
 
