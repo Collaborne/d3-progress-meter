@@ -17,11 +17,16 @@
 				/* var(--paper-green-500) */
 				fill: #4caf50;
 			}
-			#currentText,#totalText,#goalText {
+			#current,#goal,#type {
 				font-family: Arial, sans-serif;
 			}
-			#currentText {
+			#current {
 				font-weight: bold;
+			}
+			#type {
+				margin-top: 5px;
+				text-align: center;
+				text-transform: uppercase;
 			}
 		</style>
 		
@@ -30,12 +35,12 @@
 				<g>
 					<path id="background"></path>
 					<path id="progress"></path>
-					<text id="currentText" dy="-.2em" text-anchor="middle">[[currentText]]</text>
-					<text id="totalText" dy="1.5em" text-anchor="middle">[[totalText]]</text>
-					<text id="goalText" dy="2.75em" text-anchor="middle">(Goal)</text>
+					<text id="current" dy="-.2em" text-anchor="middle">[[currentText]]</text>
+					<text id="goal" dy="1.5em" text-anchor="middle">[[goalText]]</text>
 				</g>
 			</g>
 		</svg>
+		<div id="type">[[typeText]]</div>
 	</template>
 
 </dom-module>
@@ -60,7 +65,8 @@
 				observer: '_percentageChanged'
 			},
 			currentText: String,
-			totalText: String,
+			goalText: String,
+			typeText: String,
 			diameter: {
 				type: Number,
 				computed: '_computeDiameter(radius)'
@@ -90,9 +96,9 @@
 						.innerRadius(9/10 * this.radius)
 						.outerRadius(this.radius);
 	
-			this.$.currentText.style.fontSize = this.radius/2 + 'px';
-			this.$.totalText.style.fontSize = this.radius/5 + 'px';
-			this.$.goalText.style.fontSize = this.radius/5 + 'px';
+			this.$.current.style.fontSize = this.radius/2 + 'px';
+			this.$.goal.style.fontSize = this.radius/5 + 'px';
+			this.$.type.style.fontSize = this.radius/4 + 'px';
 			this.$.background.setAttribute('d', this.arc.endAngle(2 * Math.PI)());
 		},
 		_onPercentageChanged: function() {
