@@ -10,7 +10,7 @@ The component has been inspired by [EK-progress-meter](https://github.com/pinkho
 `bower install d3-progress-meter`
 
 ```html
-<d3-progress-meter radius="100" value="0.65"></d3-progress-meter>
+<d3-progress-meter radius="100" percentage="0.35" current-text="70" goal-text="Goal: 200" type-text="transactions"></d3-progress-meter>
 ```
 
 ## License
