@@ -27,6 +27,9 @@
 				margin-top: 5px;
 				text-align: center;
 				text-transform: uppercase;
+				white-space: nowrap;
+				overflow-x: hidden;
+				text-overflow: ellipsis;
 			}
 		</style>
 		
@@ -99,6 +102,7 @@
 			this.$.current.style.fontSize = this.radius/2 + 'px';
 			this.$.goal.style.fontSize = this.radius/5 + 'px';
 			this.$.type.style.fontSize = this.radius/4 + 'px';
+			this.$.type.style.width = 2 * this.radius + 'px';
 			this.$.background.setAttribute('d', this.arc.endAngle(2 * Math.PI)());
 		},
 		_onPercentageChanged: function() {
