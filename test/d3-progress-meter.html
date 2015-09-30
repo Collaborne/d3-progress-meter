@@ -85,7 +85,7 @@
 
 					test('sets background diameter to full circle', function() {
 						var background = Polymer.dom(meter.root).querySelector("#background");
-						expect(background.getAttribute("d")).to.be.eql("M0,100A100,100 0 1,1 0,-100A100,100 0 1,1 0,100M0,90A90,90 0 1,0 0,-90A90,90 0 1,0 0,90Z");
+						expect(background.getAttribute("d")).to.be.eql("M0,85A85,85 0 1,1 0,-85A85,85 0 1,1 0,85M0,82.5A82.5,82.5 0 1,0 0,-82.5A82.5,82.5 0 1,0 0,82.5Z");
 					});
 
 					test('sets progress diameter based on percentage attribute', function(done) {
