@@ -117,16 +117,21 @@
 			this._onPercentageChanged();
 		},
 		_onRadiusChanged: function() {
-			this.arc = d3.svg.arc()
+			this.progressArc = d3.svg.arc()
 						.startAngle(0)
 						.innerRadius(9/10 * this.radius)
 						.outerRadius(this.radius);
-	
+
+			this.backgroundArc = d3.svg.arc()
+						.startAngle(0)
+						.innerRadius(0.825 * this.radius)
+						.outerRadius(0.85 * this.radius);
+
 			this.$.current.style.fontSize = this.radius/2 + 'px';
 			this.$.goal.style.fontSize = this.radius/5 + 'px';
 			this.$.type.style.fontSize = this.radius/4 + 'px';
 			this.$.type.style.width = 2 * this.radius + 'px';
-			this.$.background.setAttribute('d', this.arc.endAngle(2 * Math.PI)());
+			this.$.background.setAttribute('d', this.backgroundArc.endAngle(2 * Math.PI)());
 		},
 		_onPercentageChanged: function() {
 			if (typeof this.percentage == 'undefined') {
@@ -138,7 +143,7 @@
 			d3.select(this).transition().tween(this.$.progress, function() {
 				return function(t) {
 					this.progress = i(t);
-					this.$.progress.setAttribute('d', this.arc.endAngle(2 * Math.PI * this.progress)());
+					this.$.progress.setAttribute('d', this.progressArc.endAngle(2 * Math.PI * this.progress)());
 				}.bind(this);
 			}.bind(this));
 		}
