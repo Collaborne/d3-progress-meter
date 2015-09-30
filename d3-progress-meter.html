@@ -13,7 +13,15 @@
 				/* var(--paper-grey-300) */
 				fill: #e0e0e0;
 			}
-			#progress {
+			#progress.low {
+				/* var(--paper-red-500) */
+				fill: #f44336;
+			}
+			#progress.medium {
+				/* var(--paper-yellow-500) */
+				fill: #ffeb3b;
+			}
+			#progress.high {
 				/* var(--paper-green-500) */
 				fill: #4caf50;
 			}
@@ -37,7 +45,7 @@
 			<g transform$=[[transform]]>
 				<g>
 					<path id="background"></path>
-					<path id="progress"></path>
+					<path id="progress" class$=[[_progressLevel]]></path>
 					<text id="current" dy="-.2em" text-anchor="middle">[[currentText]]</text>
 					<text id="goal" dy="1.5em" text-anchor="middle">[[goalText]]</text>
 				</g>
@@ -77,6 +85,10 @@
 			transform: {
 				type: String,
 				computed: '_computeTransform(radius)'
+			},
+			_progressLevel: {
+				type: Number,
+				computed: '_computeProgressLevel(percentage)'
 			}
 		},
 		
@@ -85,6 +97,17 @@
 		},
 		_computeTransform: function(radius) {
 			return "translate(" + radius + ", " + radius + ")";
+		},
+		_computeProgressLevel: function(percentage) {
+			if (percentage <= .33) {
+				return 'low';
+			}
+
+			if (percentage <= .66) {
+				return 'medium';
+			}
+
+			return 'high';
 		},
 		_radiusChanged: function(oldVal, newVal) {
 			this._onRadiusChanged();
