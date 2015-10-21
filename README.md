@@ -17,13 +17,13 @@ The component has been inspired by [EK-progress-meter](https://github.com/pinkho
 
 ## Properties
 
-Property     | Description                                                              | Example
------------- | ------------------------------------------------------------------------ | -------
-radius       | Radius of the meter. The element will have twice the size of the radius. | 100
-percentage   | Progress in percent                                                      | 0.4
-current-text | Large number showing current progress                                    | $8
-goal-text    | Small text indicating when progress will be 100%                         | Goal: $20
-type-text    | Bottom text describing for what progress is measured                     | Sales
+Property         | Description                                                              | Example
+---------------- | ------------------------------------------------------------------------ | -------
+**radius**       | Radius of the meter. The element will have twice the size of the radius. | 100
+**percentage**   | Progress in percent                                                      | 0.4
+**current-text** | Large number showing current progress                                    | $8
+**goal-text**    | Small text indicating when progress will be 100%                         | Goal: $20
+**type-text**    | Bottom text describing for what progress is measured                     | Sales
 
 
 ## License
