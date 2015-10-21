@@ -26,6 +26,11 @@ Property         | Description                                                  
 **type-text**    | Bottom text describing for what progress is measured                     | Sales
 
 
+## Continuous integration
+
+[Travis-CI](https://travis-ci.org/Collaborne/d3-progress-meter) [![Travis state](https://travis-ci.org/Collaborne/d3-progress-meter.svg?branch=master)](https://travis-ci.org/Collaborne/d3-progress-meter)
+
+
 ## License
 
     This software is licensed under the Apache 2 license, quoted below.
