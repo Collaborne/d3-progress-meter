@@ -5,6 +5,8 @@ d3-progress-meter [![Bower version](https://badge.fury.io/bo/d3-progress-meter.s
 
 The component has been inspired by [EK-progress-meter](https://github.com/pinkhominid/ek-progress-meter).
 
+![Screenshot](/doc/screenshot.png "Screenshot")
+
 
 ## Usage
 
