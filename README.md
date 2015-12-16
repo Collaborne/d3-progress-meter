@@ -1,4 +1,4 @@
-d3-progress-meter [![Bower version](https://badge.fury.io/bo/d3-progress-meter.svg)](http://badge.fury.io/bo/d3-progress-meter)
+d3-progress-meter [![Bower version](https://badge.fury.io/bo/d3-progress-meter.svg)](http://badge.fury.io/bo/d3-progress-meter) [![Travis state](https://travis-ci.org/Collaborne/d3-progress-meter.svg?branch=master)](https://travis-ci.org/Collaborne/d3-progress-meter)
 =================
 
 `d3-progress-meter` is an animated chart that shows the progress as a meter. The web component is built with [Polymer 1.x](https://www.polymer-project.org) and [D3](http://d3js.org).
@@ -26,11 +26,6 @@ Property         | Type   | Description                                         
 **current-text** | String | Large number showing current progress                                    | $8
 **goal-text**    | String | Small text indicating when progress will be 100%                         | Goal: $20
 **type-text**    | String | Bottom text describing for what progress is measured                     | Sales
-
-
-## Continuous integration
-
-[Travis-CI](https://travis-ci.org/Collaborne/d3-progress-meter) [![Travis state](https://travis-ci.org/Collaborne/d3-progress-meter.svg?branch=master)](https://travis-ci.org/Collaborne/d3-progress-meter)
 
 
 ## License
