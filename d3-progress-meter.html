@@ -53,8 +53,8 @@ An animated chart that shows the progress as a meter
 			}
 		</style>
 		
-		<svg width$=[[diameter]] height$=[[diameter]]>
-			<g transform$=[[transform]]>
+		<svg width$=[[_diameter]] height$=[[_diameter]]>
+			<g transform$=[[_transform]]>
 				<g>
 					<path id="background"></path>
 					<path id="progress" class$=[[_progressLevel]]></path>
@@ -74,14 +74,6 @@ An animated chart that shows the progress as a meter
 	Polymer({
 		is: 'd3-progress-meter',
 		properties: {
-			/**
-			 * Amount of progress made (absolute number)
-			 */
-			progress: {
-				type: Number,
-				value: 0
-			},
-
 			/**
 			 * Radius of the meter. The element will have twice the size of the radius
 			 */
@@ -114,11 +106,19 @@ An animated chart that shows the progress as a meter
 			 */
 			typeText: String,
 
-			diameter: {
+			/**
+			 * Amount of progress made (absolute number)
+			 */
+			_progress: {
+				type: Number,
+				value: 0
+			},
+
+			_diameter: {
 				type: Number,
 				computed: '_computeDiameter(radius)'
 			},
-			transform: {
+			_transform: {
 				type: String,
 				computed: '_computeTransform(radius)'
 			},
@@ -175,11 +175,11 @@ An animated chart that shows the progress as a meter
 			}
 			this.percentage = Math.min(1, Math.max(0, this.percentage));
 			
-			var i = d3.interpolate(this.progress, this.percentage);
+			var i = d3.interpolate(this._progress, this.percentage);
 			d3.select(this).transition().tween(this.$.progress, function() {
 				return function(t) {
-					this.progress = i(t);
-					this.$.progress.setAttribute('d', this.progressArc.endAngle(2 * Math.PI * this.progress)());
+					this._progress = i(t);
+					this.$.progress.setAttribute('d', this.progressArc.endAngle(2 * Math.PI * this._progress)());
 				}.bind(this);
 			}.bind(this));
 		}
