@@ -3,10 +3,17 @@
 	    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
 		<link rel="import" href="../d3-progress-meter.html">
 	</head>
-	
+
 	<body>
-		<d3-progress-meter radius="100" percentage="0.2" current-text="70" goal-text="Goal: 200" type-text="transactions"></d3-progress-meter>
-		<d3-progress-meter radius="100" percentage="0.65" current-text="6.5m" goal-text="Goal: $10m" type-text="revenue"></d3-progress-meter>
-		<d3-progress-meter radius="100" percentage="0.9" current-text="225" goal-text="Goal: 250" type-text="points"></d3-progress-meter>
+		<template is="dom-bind">
+			<d3-progress-meter radius="100" percentage="0.2" current-text="70" goal-text="Goal: 200" type-text="transactions"></d3-progress-meter>
+			<d3-progress-meter radius="100" percentage="0.65" current-text="6.5m" goal-text="Goal: $10m" type-text="revenue"></d3-progress-meter>
+			<d3-progress-meter radius="100" percentage="0.9" current-text="225" goal-text="Goal: 250" type-text="points"></d3-progress-meter> <br/>
+			<d3-progress-meter radius="100" percentage="0.5" current-text="10" goal-text="Goal: 20" type-text="Visits" background-color="#00ffff" progress-colors="[[colors]]" caption="New visits per day"></d3-progress-meter>
+		</template>
+		<script>
+			var scope = document.querySelector("template[is=dom-bind]");
+			scope.colors = ['#009999', '#009999', '#009999'];
+		</script>
 	</body>
 </html>
