@@ -22,6 +22,22 @@ An animated chart that shows the progress as a meter
 			:host {
 				display: inline-block;
 			}
+			#background {
+				/* var(--paper-grey-300) */
+				fill: var(--progress-meter-background-color, #e0e0e0);
+			}
+			#progress.low {
+				/* var(--paper-red-500) */
+				fill: var(--progress-meter-color-low, #f44336);
+			}
+			#progress.medium {
+				/* var(--paper-yellow-500) */
+				fill: var(--progress-meter-color-medium, #ffeb3b);
+			}
+			#progress.high {
+				/* var(--paper-green-500) */
+				fill: var(--progress-meter-color-high, #4caf50);
+			}
 			#current,#goal,#type,#caption {
 				font-family: Arial, sans-serif;
 			}
@@ -103,16 +119,6 @@ An animated chart that shows the progress as a meter
 			caption: String,
 
 			/**
-			 * Color of the background circle
-			 */
-			backgroundColor: String,
-
-			/**
-			 * Array of three colors that specify, in order: low progress, medium progress, high progress
-			 */
-			progressColors: [],
-
-			/**
 			 * Amount of progress made (absolute number)
 			 */
 			_progress: {
@@ -133,35 +139,6 @@ An animated chart that shows the progress as a meter
 				computed: '_computeProgressLevel(percentage)'
 			}
 		},
-
-		attached: function() {
-			this._setColors();
-		},
-
-		/**
-		 * Set the colors of the elements to the ones specified by the user, use defaults if nothing was specified
-		 */
-		_setColors() {
-			// default to var(--paper-grey-300)
-			this.$.background.style.fill = this.backgroundColor? this.backgroundColor : '#e0e0e0';
-			if (!this.progressColors || this.progressColors.length !== 3) {
-				// default to var(--paper-red-500), var(--paper-yellow-500) and var(--paper-green-500)
-				this.progressColors = ['#f44336', '#ffeb3b', '#4caf50'];
-			}
-			var lowProgress = Polymer.dom(this.root).querySelector('.low');
-			if (lowProgress) {
-				lowProgress.style.fill = this.progressColors[0];
-			}
-			var mediumProgress = Polymer.dom(this.root).querySelector('.medium');
-			if (mediumProgress) {
-				mediumProgress.style.fill = this.progressColors[1];
-			}
-			var highProgress = Polymer.dom(this.root).querySelector('.high');
-			if (highProgress) {
-				highProgress.style.fill = this.progressColors[2];
-			}
-		},
-
 		_computeDiameter: function(radius) {
 			return 2 * radius;
 		},

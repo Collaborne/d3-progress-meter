@@ -2,18 +2,20 @@
 	<head>
 	    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
 		<link rel="import" href="../d3-progress-meter.html">
+		<style is="custom-style">
+			.custom {
+				--progress-meter-background-color: #00FFFF;
+				--progress-meter-color-low: #009999;
+				--progress-meter-color-medium: #009999;
+				--progress-meter-color-high: #009999;
+			}
+		</style>
 	</head>
 
 	<body>
-		<template is="dom-bind">
-			<d3-progress-meter radius="100" percentage="0.2" current-text="70" goal-text="Goal: 200" type-text="transactions"></d3-progress-meter>
-			<d3-progress-meter radius="100" percentage="0.65" current-text="6.5m" goal-text="Goal: $10m" type-text="revenue"></d3-progress-meter>
-			<d3-progress-meter radius="100" percentage="0.9" current-text="225" goal-text="Goal: 250" type-text="points"></d3-progress-meter> <br/>
-			<d3-progress-meter radius="100" percentage="0.5" current-text="10" goal-text="Goal: 20" type-text="Visits" background-color="#00ffff" progress-colors="[[colors]]" caption="New visits per day"></d3-progress-meter>
-		</template>
-		<script>
-			var scope = document.querySelector("template[is=dom-bind]");
-			scope.colors = ['#009999', '#009999', '#009999'];
-		</script>
+		<d3-progress-meter radius="100" percentage="0.2" current-text="70" goal-text="Goal: 200" type-text="transactions"></d3-progress-meter>
+		<d3-progress-meter radius="100" percentage="0.65" current-text="6.5m" goal-text="Goal: $10m" type-text="revenue"></d3-progress-meter>
+		<d3-progress-meter radius="100" percentage="0.9" current-text="225" goal-text="Goal: 250" type-text="points"></d3-progress-meter> <br/>
+		<d3-progress-meter class="custom" radius="100" percentage="0.5" current-text="10" goal-text="Goal: 20" type-text="Visits" caption="New visits per day"></d3-progress-meter>
 	</body>
 </html>
