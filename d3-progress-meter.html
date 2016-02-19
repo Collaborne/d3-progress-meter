@@ -105,11 +105,7 @@ An animated chart that shows the progress as a meter
 			/**
 			 * Color of the background circle
 			 */
-			backgroundColor: {
-				type: String,
-				// var(--paper-grey-300)
-				value: '#e0e0e0'
-			},
+			backgroundColor: String,
 
 			/**
 			 * Array of three colors that specify, in order: low progress, medium progress, high progress
@@ -146,6 +142,7 @@ An animated chart that shows the progress as a meter
 		 * Set the colors of the elements to the ones specified by the user, use defaults if nothing was specified
 		 */
 		_setColors() {
+			// default to var(--paper-grey-300)
 			this.$.background.style.fill = this.backgroundColor? this.backgroundColor : '#e0e0e0';
 			if (!this.progressColors || this.progressColors.length !== 3) {
 				// default to var(--paper-red-500), var(--paper-yellow-500) and var(--paper-green-500)
