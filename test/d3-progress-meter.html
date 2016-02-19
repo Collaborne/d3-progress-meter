@@ -4,59 +4,68 @@
 		<title>d3-progress-meter</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		
+
 		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
 		<script src="../../web-component-tester/browser.js"></script>
 		<script src="../../test-fixture/test-fixture-mocha.js"></script>
-		
+
 		<link rel="import" href="../d3-progress-meter.html">
 		<link rel="import" href="../../test-fixture/test-fixture.html">
 	</head>
 	<body>
-	
+
 		<test-fixture id="TrivialProgressMeter">
 			<template>
 				<d3-progress-meter radius="100" percentage="0.05"></d3-progress-meter>
 			</template>
 		</test-fixture>
-	
+
 		<test-fixture id="ProgressMeterWithText">
 			<template>
-				<d3-progress-meter radius="100" percentage="0.35" current-text="70" goal-text="Goal: 200" type-text="transactions"></d3-progress-meter>
+				<d3-progress-meter
+					radius="100"
+					percentage="0.35"
+					current-text="70"
+					goal-text="Goal: 200"
+					type-text="transactions"
+					caption="caption">
+				</d3-progress-meter>
 			</template>
 		</test-fixture>
 
-	
+
 		<script>
 			suite('<d3-progress-meter>', function() {
 				suite('sizing behavior', function() {
 					var meter;
-	
+
 					setup(function() {
 						meter = fixture('TrivialProgressMeter');
 					});
-					
+
 					test('sets element width/height based on radius attribute', function() {
 						var svg = Polymer.dom(meter.root).querySelector("svg");
-						
+
 						expect(svg.getAttribute("width")).to.be.eql("200");
 						expect(svg.getAttribute("height")).to.be.eql("200");
 					});
-					
+
 					test('sets font-sizes based on radius attribute', function() {
 						var current = Polymer.dom(meter.root).querySelector("#current");
 						var goal = Polymer.dom(meter.root).querySelector("#goal");
 						var type = Polymer.dom(meter.root).querySelector("#type");
-						
+						var caption = Polymer.dom(meter.root).querySelector("#caption");
+
 						expect(current.style.fontSize).to.be.eql("50px");
 						expect(goal.style.fontSize).to.be.eql("20px");
 						expect(type.style.fontSize).to.be.eql("25px");
+						expect(caption.style.fontSize).to.be.eql("20px");
 					});
 				});
 
 				suite('text behavior', function() {
 					var meter;
-	
+
 					setup(function() {
 						meter = fixture('ProgressMeterWithText');
 					});
@@ -65,21 +74,26 @@
 						var current = Polymer.dom(meter.root).querySelector("#current");
 						expect(current.innerHTML).to.be.eql("70");
 					});
-					
+
 					test('sets goal text based on goal-text attribute', function() {
 						var goal = Polymer.dom(meter.root).querySelector("#goal");
 						expect(goal.innerHTML).to.be.eql("Goal: 200");
 					});
-					
+
 					test('sets type text based on type-text attribute', function() {
 						var type = Polymer.dom(meter.root).querySelector("#type");
 						expect(type.innerHTML).to.be.eql("transactions");
+					});
+
+					test('sets caption text based on type-text attribute', function() {
+						var caption = Polymer.dom(meter.root).querySelector("#caption");
+						expect(caption.innerHTML).to.be.eql("caption");
 					});
 				});
 
 				suite('progress behavior', function() {
 					var meter;
-	
+
 					setup(function() {
 						meter = fixture('TrivialProgressMeter');
 					});
@@ -101,7 +115,7 @@
 
 				suite('progress coloring', function() {
 					var meter;
-	
+
 					setup(function() {
 						meter = fixture('TrivialProgressMeter');
 					});
@@ -126,6 +140,6 @@
 				});
 			});
 		</script>
-	
+
 	</body>
 </html>
