@@ -59,18 +59,18 @@ An animated chart that shows the progress as a meter
 			}
 		</style>
 
-		<svg width$=[[_diameter]] height$=[[_diameter]]>
-			<g transform$=[[_transform]]>
+		<svg width$="[[_diameter]]" height$="[[_diameter]]">
+			<g transform$="[[_transform]]">
 				<g>
 					<path id="background"></path>
-					<path id="progress" class$=[[_progressLevel]]></path>
+					<path id="progress" class$="[[_progressLevel]]"></path>
 					<text id="current" dy="-.2em" text-anchor="middle">[[currentText]]</text>
 					<text id="goal" dy="1.5em" text-anchor="middle">[[goalText]]</text>
 				</g>
 			</g>
 		</svg>
 		<div id="type">[[typeText]]</div>
-		<div hidden$=[[!caption]] id="caption">[[caption]]</div>
+		<div hidden$="[[!caption]]" id="caption">[[caption]]</div>
 	</template>
 
 </dom-module>
