@@ -22,7 +22,7 @@ An animated chart that shows the progress as a meter
 			:host {
 				display: inline-block;
 			}
-			#current,#goal,#type {
+			#current,#goal,#type,#caption {
 				font-family: Arial, sans-serif;
 			}
 			#current {
@@ -35,6 +35,11 @@ An animated chart that shows the progress as a meter
 				white-space: nowrap;
 				overflow-x: hidden;
 				text-overflow: ellipsis;
+			}
+			#caption {
+				/*var(--secondary-text-color)*/
+				color: #737373;
+				text-align: center;
 			}
 		</style>
 
@@ -49,6 +54,7 @@ An animated chart that shows the progress as a meter
 			</g>
 		</svg>
 		<div id="type">[[typeText]]</div>
+		<div hidden=[[!caption]] id="caption">[[caption]]</div>
 	</template>
 
 </dom-module>
@@ -90,6 +96,11 @@ An animated chart that shows the progress as a meter
 			 * Bottom text describing for what progress is measured
 			 */
 			typeText: String,
+
+			/**
+			 * Optional secondary text displayed under the type text
+			 */
+			caption: String,
 
 			/**
 			 * Color of the background circle
@@ -193,6 +204,8 @@ An animated chart that shows the progress as a meter
 			this.$.goal.style.fontSize = this.radius/5 + 'px';
 			this.$.type.style.fontSize = this.radius/4 + 'px';
 			this.$.type.style.width = 2 * this.radius + 'px';
+			this.$.caption.style.fontSize = this.radius/5 + 'px';
+			this.$.caption.style.width = 2 * this.radius + 'px';
 			this.$.background.setAttribute('d', this.backgroundArc.endAngle(2 * Math.PI)());
 		},
 		_onPercentageChanged: function() {
