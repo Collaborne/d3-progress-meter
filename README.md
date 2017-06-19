@@ -9,6 +9,8 @@ To use this element:
 
 `bower install d3-progress-meter`
 
+## Examples
+
 <!--
 ```
 <custom-element-demo>
@@ -20,8 +22,6 @@ To use this element:
 ```
 -->
 
-### Simple Elements
-
 ```html
 <d3-progress-meter radius="100" percentage="0.2" current-text="70" goal-text="Goal: 200" type-text="transactions"></d3-progress-meter>
 <d3-progress-meter radius="100" percentage="0.65" current-text="6.5m" goal-text="Goal: $10m" type-text="revenue"></d3-progress-meter>
@@ -29,6 +29,17 @@ To use this element:
 ```
 
 ### Custom Styling
+
+<!--
+```
+<custom-element-demo>
+  <template>
+    <link rel="import" href="d3-progress-meter.html">
+    <next-code-block></next-code-block>
+  </template>
+</custom-element-demo>
+```
+-->
 
 ```html
 <style is="custom-style">
