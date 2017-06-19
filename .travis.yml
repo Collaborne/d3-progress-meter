@@ -1,12 +1,12 @@
-language: node_js
+dist: trusty
 sudo: false
+group: beta
+
+language: node_js
 node_js:
 - node
 addons:
   firefox: '49.0.2'
-  apt:
-    packages:
-    - oracle-java8-installer
 cache:
   directories:
   - node_modules
@@ -19,4 +19,4 @@ before_script:
 - polylint
 - export PATH=$PWD/node_modules/.bin:$PATH
 script:
-- JAVA_HOME=/usr/lib/jvm/java-8-oracle PATH=/usr/lib/jvm/java-8-oracle/bin:$PATH xvfb-run wct
+- xvfb-run wct
