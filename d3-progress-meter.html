@@ -16,7 +16,15 @@ Custom property | Description | Default
 `--progress-meter-color-low` | Color of the progress bar for low values | `#f44336`
 `--progress-meter-color-medium` | Color of the progress bar for medium values | `#ffeb3b`
 `--progress-meter-color-high` | Color of the progress bar for high values | `#4caf50`
+`--progress-meter-current-font-size-scale` | Controls font size of `current-text` | `0.5`
+`--progress-meter-goal-font-size-scale` | Controls font size of `goal-text` | `0.2`
+`--progress-meter-type-font-size-scale` | Controls font size of `type-text` | `0.25`
+`--progress-meter-type-width-scale` | Controls width of `type-text` | `4`
+`--progress-meter-caption-font-size-scale` | Controls font size of `caption` | `0.2`
+`--progress-meter-caption-width-scale` | Controls width of `caption` | `2`
 
+All the `-scale` properties are used to set the sizes proportionally to the element's `radius`. For example, by default
+the `current-text` font size is half that of the `radius`.
 
 ### Example
 
@@ -33,6 +41,12 @@ Custom property | Description | Default
 		<style>
 			:host {
 				display: inline-block;
+				--progress-meter-current-font-size-scale: 0.5;
+				--progress-meter-goal-font-size-scale: 0.2;
+				--progress-meter-type-font-size-scale: 0.25;
+				--progress-meter-type-width-scale: 4;
+				--progress-meter-caption-font-size-scale: 0.2;
+				--progress-meter-caption-width-scale: 2;
 			}
 			#background {
 				/* var(--paper-grey-300) */
@@ -53,8 +67,20 @@ Custom property | Description | Default
 			#current,#goal,#type,#caption {
 				font-family: Arial, sans-serif;
 			}
+			#type {
+				font-size: calc(var(--radius) * var(--progress-meter-type-font-size-scale));
+				width: calc(var(--radius) * var(--progress-meter-type-width-scale));
+			}
+			#caption {
+				font-size: calc(var(--radius) * var(--progress-meter-caption-font-size-scale));
+				width: calc(var(--radius) * var(--progress-meter-caption-width-scale));
+			}
+			#goal {
+				font-size: calc(var(--radius) * var(--progress-meter-goal-font-size-scale));
+			}
 			#current {
 				font-weight: bold;
+				font-size: calc(var(--radius) * var(--progress-meter-current-font-size-scale));
 			}
 			#type {
 				margin-top: 5px;
@@ -186,12 +212,15 @@ Custom property | Description | Default
 						.innerRadius(0.825 * this.radius)
 						.outerRadius(0.85 * this.radius);
 
-			this.$.current.style.fontSize = this.radius/2 + 'px';
-			this.$.goal.style.fontSize = this.radius/5 + 'px';
-			this.$.type.style.fontSize = this.radius/4 + 'px';
-			this.$.type.style.width = 2 * this.radius + 'px';
-			this.$.caption.style.fontSize = this.radius/5 + 'px';
-			this.$.caption.style.width = 2 * this.radius + 'px';
+			if (this.customStyle) {
+				// Polymer 1.x
+				this.customStyle['--radius'] = this.radius + 'px';
+				this.updateStyles();
+			} else {
+				// Polymer 2.0+
+				this.updateStyles({'--radius': this.radius + 'px'});
+			}
+
 			this.$.background.setAttribute('d', this.backgroundArc.endAngle(2 * Math.PI)());
 		},
 		_onPercentageChanged: function() {
