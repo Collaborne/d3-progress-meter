@@ -157,6 +157,22 @@ the `current-text` font size is half that of the `radius`.
 			caption: String,
 
 			/**
+			 * Lower bound of progress, below which the indicator turns red
+			 */
+			lowThreshold: {
+				type: Number,
+				value: 0.33
+			},
+
+			/**
+			 * Higher bound of progress, above which the indicator turns green
+			 */
+			highThreshold: {
+				type: Number,
+				value: 0.66
+			},
+
+			/**
 			 * Amount of progress made (absolute number)
 			 */
 			_progress: {
@@ -184,11 +200,11 @@ the `current-text` font size is half that of the `radius`.
 			return "translate(" + radius + ", " + radius + ")";
 		},
 		_computeProgressLevel: function(percentage) {
-			if (percentage <= .33) {
+			if (percentage <= this.lowThreshold) {
 				return 'low';
 			}
 
-			if (percentage <= .66) {
+			if (percentage <= this.highThreshold) {
 				return 'medium';
 			}
 
