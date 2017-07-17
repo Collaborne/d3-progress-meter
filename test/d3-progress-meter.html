@@ -50,16 +50,19 @@
 						expect(svg.getAttribute("height")).to.be.eql("200");
 					});
 
-					test('sets font-sizes based on radius attribute', function() {
+					test('sets font-sizes based on radius attribute', function(done) {
 						var current = Polymer.dom(meter.root).querySelector("#current");
 						var goal = Polymer.dom(meter.root).querySelector("#goal");
 						var type = Polymer.dom(meter.root).querySelector("#type");
 						var caption = Polymer.dom(meter.root).querySelector("#caption");
 
+						flush(function() {
 						expect(current.style.fontSize).to.be.eql("50px");
 						expect(goal.style.fontSize).to.be.eql("20px");
 						expect(type.style.fontSize).to.be.eql("25px");
 						expect(caption.style.fontSize).to.be.eql("20px");
+						done();
+                        });
 					});
 				});
 

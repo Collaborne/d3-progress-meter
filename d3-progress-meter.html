@@ -33,6 +33,12 @@ Custom property | Description | Default
 		<style>
 			:host {
 				display: inline-block;
+				--progess-meter-current-font-size-divisor: 2;
+				--progess-meter-goal-font-size-divisor: 5;
+				--progess-meter-type-font-size-divisor: 4;
+				--progess-meter-type-width-multiplier: 4;
+				--progess-meter-caption-font-size-divisor: 5;
+				--progess-meter-caption-width-multiplier: 2;
 			}
 			#background {
 				/* var(--paper-grey-300) */
@@ -53,8 +59,20 @@ Custom property | Description | Default
 			#current,#goal,#type,#caption {
 				font-family: Arial, sans-serif;
 			}
+			#type {
+				font-size: calc(var(--radius) / var(--progess-meter-type-font-size-divisor));
+				width: calc(var(--radius) * var(--progess-meter-type-width-multiplier));
+			}
+			#caption {
+				font-size: calc(var(--radius) / var(--progess-meter-caption-font-size-divisor));
+				width: calc(var(--radius) * var(--progess-meter-caption-width-multiplier));
+			}
+			#goal {
+				font-size: calc(var(--radius) / var(--progess-meter-goal-font-size-divisor));
+			}
 			#current {
 				font-weight: bold;
+				font-size: calc(var(--radius) / var(--progess-meter-current-font-size-divisor));
 			}
 			#type {
 				margin-top: 5px;
@@ -186,12 +204,15 @@ Custom property | Description | Default
 						.innerRadius(0.825 * this.radius)
 						.outerRadius(0.85 * this.radius);
 
-			this.$.current.style.fontSize = this.radius/2 + 'px';
-			this.$.goal.style.fontSize = this.radius/5 + 'px';
-			this.$.type.style.fontSize = this.radius/4 + 'px';
-			this.$.type.style.width = 2 * this.radius + 'px';
-			this.$.caption.style.fontSize = this.radius/5 + 'px';
-			this.$.caption.style.width = 2 * this.radius + 'px';
+			if(this.customStyle) {
+			  // Polymer 1.x
+			  this.customStyle['--radius'] = this.radius + 'px';
+			  this.updateStyles();
+			} else {
+			  // Polymer 2.0+
+			  this.updateStyles({'--radius': this.radius + 'px'});
+			}
+
 			this.$.background.setAttribute('d', this.backgroundArc.endAngle(2 * Math.PI)());
 		},
 		_onPercentageChanged: function() {
