@@ -33,6 +33,11 @@
 			</template>
 		</test-fixture>
 
+		<test-fixture id="ProgressMeterWithCustomThresholds">
+			<template>
+				<d3-progress-meter low-threshold="0.2" high-threshold="0.8"></d3-progress-meter>
+			</template>
+		</test-fixture>
 
 		<script>
 			suite('<d3-progress-meter>', function() {
@@ -134,6 +139,38 @@
 
 					test('sets high color for percentage > 66%', function() {
 						meter.percentage = .67;
+						var progress = Polymer.dom(meter.root).querySelector("#progress");
+						expect(progress.getAttribute("class")).to.contain("high");
+					});
+				});
+
+				suite('customized progress coloring', function() {
+					var meter;
+
+					setup(function() {
+						meter = fixture('ProgressMeterWithCustomThresholds');
+					});
+
+					test('sets low color for percentage < 20%', function() {
+						meter.percentage = .19;
+						var progress = Polymer.dom(meter.root).querySelector("#progress");
+						expect(progress.getAttribute("class")).to.contain("low");
+					});
+
+					test('sets medium color for percentage > 20% and < 33%', function() {
+						meter.percentage = .3;
+						var progress = Polymer.dom(meter.root).querySelector("#progress");
+						expect(progress.getAttribute("class")).to.contain("medium");
+					});
+
+					test('sets medium color for percentage > 33% and < 80%', function() {
+						meter.percentage = .7;
+						var progress = Polymer.dom(meter.root).querySelector("#progress");
+						expect(progress.getAttribute("class")).to.contain("medium");
+					});
+
+					test('sets high color for percentage > 80%', function() {
+						meter.percentage = .82;
 						var progress = Polymer.dom(meter.root).querySelector("#progress");
 						expect(progress.getAttribute("class")).to.contain("high");
 					});
