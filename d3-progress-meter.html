@@ -204,13 +204,13 @@ Custom property | Description | Default
 						.innerRadius(0.825 * this.radius)
 						.outerRadius(0.85 * this.radius);
 
-			if(this.customStyle) {
-			  // Polymer 1.x
-			  this.customStyle['--radius'] = this.radius + 'px';
-			  this.updateStyles();
+			if (this.customStyle) {
+				// Polymer 1.x
+				this.customStyle['--radius'] = this.radius + 'px';
+				this.updateStyles();
 			} else {
-			  // Polymer 2.0+
-			  this.updateStyles({'--radius': this.radius + 'px'});
+				// Polymer 2.0+
+				// 			  this.updateStyles({'--radius': this.radius + 'px'});
 			}
 
 			this.$.background.setAttribute('d', this.backgroundArc.endAngle(2 * Math.PI)());

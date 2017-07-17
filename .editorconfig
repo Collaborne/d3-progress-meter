@@ -1,0 +1,4 @@
+root = true
+
+[*.html]
+indent_style = tab
