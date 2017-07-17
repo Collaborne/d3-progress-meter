@@ -218,7 +218,7 @@ the `current-text` font size is half that of the `radius`.
 				this.updateStyles();
 			} else {
 				// Polymer 2.0+
-				// 			  this.updateStyles({'--radius': this.radius + 'px'});
+				this.updateStyles({'--radius': this.radius + 'px'});
 			}
 
 			this.$.background.setAttribute('d', this.backgroundArc.endAngle(2 * Math.PI)());
