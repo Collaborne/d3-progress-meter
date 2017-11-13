@@ -48,6 +48,7 @@ To use this element:
         --progress-meter-color-low: #009999;
         --progress-meter-color-medium: #009999;
         --progress-meter-color-high: #009999;
+        --progress-meter-color-current: #009999;
     }
 </style>
 

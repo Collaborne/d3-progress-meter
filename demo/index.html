@@ -13,5 +13,13 @@
 
 		<h2>Progress meter without goal line</h2>
 		<d3-progress-meter radius="100" percentage="0.75" current-text="70%"></d3-progress-meter>
+
+		<h2>Progress meter with custom styling</h2>
+		<style is="custom-style">
+			.custom {
+				--progress-meter-color-current: red;
+			}
+		</style>
+		<d3-progress-meter radius="100" percentage="0.75" current-text="30%" class="custom"></d3-progress-meter>
 	</body>
 </html>
