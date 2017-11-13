@@ -102,7 +102,7 @@ the `current-text` font size is half that of the `radius`.
 				<g>
 					<path id="background"></path>
 					<path id="progress" class$="[[_progressLevel]]"></path>
-					<text id="current" dy="-.2em" text-anchor="middle">[[currentText]]</text>
+					<text id="current" dy$="[[_currentOffsetY]]" text-anchor="middle">[[currentText]]</text>
 					<text id="goal" dy="1.5em" text-anchor="middle">[[goalText]]</text>
 				</g>
 			</g>
@@ -191,7 +191,12 @@ the `current-text` font size is half that of the `radius`.
 			_progressLevel: {
 				type: Number,
 				computed: '_computeProgressLevel(percentage)'
-			}
+			},
+			_currentOffsetY: {
+				type: Number,
+				computed: '_computeCurrentY(goalText)',
+				value: '.3em'
+			},
 		},
 		_computeDiameter: function(radius) {
 			return 2 * radius;
@@ -252,6 +257,9 @@ the `current-text` font size is half that of the `radius`.
 					this.$.progress.setAttribute('d', this.progressArc.endAngle(2 * Math.PI * this._progress)());
 				}.bind(this);
 			}.bind(this));
+		},
+		_computeCurrentY: function(goalText) {
+			return Boolean(goalText) && goalText.length > 0 ? '-.2em' : '.3em';
 		}
 	});
 
