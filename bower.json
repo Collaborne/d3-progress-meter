@@ -1,29 +1,28 @@
 {
-  "name": "d3-progress-meter",
+  "name": "d3-task-planner",
   "authors": [
     "collaborne"
   ],
-  "description": "Web component providing a D3 based progress meter (Polymer 1.x)",
-  "main": "d3-progress-meter.html",
+  "description": "Web component providing a D3 based task planner",
+  "main": "d3-task-planner.html",
   "keywords": [
     "web-components",
     "polymer",
     "d3",
     "chart",
-    "progress"
+    "scheduler",
+    "task-planner"
   ],
   "license": "Apache 2",
-  "homepage": "https://github.com/collaborne/d3-progress-meter",
   "ignore": [
     "**/.*"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#^2.0.0",
-    "d3": "~3.5.6"
+    "polymer": "Polymer/polymer#^2.0.0"
   },
   "devDependencies": {
-    "iron-component-page": "PolymerElements/iron-component-page#^2.0.0",
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",
-    "web-component-tester": "*"
+    "web-component-tester": "*",
+    "iron-component-page": "^3.0.1"
   }
 }
