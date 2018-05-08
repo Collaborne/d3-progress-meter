@@ -1,12 +1,25 @@
 <html>
 	<head>
-		<script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
-		<link rel="import" href="../bower_components/paper-styles/demo-pages.html">
-		<link rel="import" href="../d3-task-planner.html">
+		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+		<link rel="import" href="../../paper-styles/demo-pages.html">
+		<link rel="import" href="../d3-progress-meter.html">
 	</head>
 
 	<body>
-		<h2>Task planner</h2>
-		<d3-task-planner></d3-task-planner>
+		<h2>Simple progress meters</h2>
+		<d3-progress-meter radius="50" percentage="0.2" current-text="70" goal-text="Goal: 200" type-text="transactions"></d3-progress-meter>
+		<d3-progress-meter radius="50" percentage="0.65" current-text="6.5m" goal-text="Goal: $10m" type-text="revenue"></d3-progress-meter>
+		<d3-progress-meter radius="50" percentage="0.9" current-text="225" goal-text="Goal: 250" type-text="points"></d3-progress-meter>
+
+		<h2>Progress meter without goal line</h2>
+		<d3-progress-meter radius="50" percentage="0.75" current-text="70%"></d3-progress-meter>
+
+		<h2>Progress meter with custom styling</h2>
+		<style is="custom-style">
+			.custom {
+				--progress-meter-color-current: red;
+			}
+		</style>
+		<d3-progress-meter radius="50" percentage="0.75" current-text="30%" class="custom"></d3-progress-meter>
 	</body>
 </html>

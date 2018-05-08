@@ -1,11 +1,13 @@
-d3-task-planner
+d3-progress-meter [![Bower version](https://badge.fury.io/bo/d3-progress-meter.svg)](http://badge.fury.io/bo/d3-progress-meter) [![Travis state](https://travis-ci.org/Collaborne/d3-progress-meter.svg?branch=master)](https://travis-ci.org/Collaborne/d3-progress-meter) [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/Collaborne/d3-progress-meter)
 =================
 
-`d3-task-planner` is a chart that shows tasks as draggable dots. It accepts as input a schedule as it's modeled by the [tasks-scheduler](https://github.com/Collaborne/tasks-scheduler). The web component is built with [Polymer 2.x](https://www.polymer-project.org) and [D3 v.4](http://d3js.org).
+`d3-progress-meter` is an animated chart that shows the progress as a meter. The web component is built with [Polymer 1.x](https://www.polymer-project.org) and [D3](http://d3js.org).
+
+The component has been inspired by [EK-progress-meter](https://github.com/pinkhominid/ek-progress-meter).
 
 To use this element:
 
-`bower install d3-task-planner`
+`bower install d3-progress-meter`
 
 ## Examples
 
@@ -13,7 +15,7 @@ To use this element:
 ```
 <custom-element-demo>
   <template>
-    <link rel="import" href="d3-task-planner.html">
+    <link rel="import" href="d3-progress-meter.html">
     <next-code-block></next-code-block>
   </template>
 </custom-element-demo>
@@ -21,8 +23,9 @@ To use this element:
 -->
 
 ```html
-<d3-task-planner></d3-task-planner>
-
+<d3-progress-meter radius="100" percentage="0.2" current-text="70" goal-text="Goal: 200" type-text="transactions"></d3-progress-meter>
+<d3-progress-meter radius="100" percentage="0.65" current-text="6.5m" goal-text="Goal: $10m" type-text="revenue"></d3-progress-meter>
+<d3-progress-meter radius="100" percentage="0.9" current-text="225" goal-text="Goal: 250" type-text="points"></d3-progress-meter>
 ```
 
 ### Custom Styling
@@ -31,7 +34,7 @@ To use this element:
 ```
 <custom-element-demo>
   <template>
-    <link rel="import" href="d3-task-planner.html">
+    <link rel="import" href="d3-progress-meter.html">
     <next-code-block></next-code-block>
   </template>
 </custom-element-demo>
@@ -49,7 +52,7 @@ To use this element:
     }
 </style>
 
-<d3-task-planner class="custom" radius="100" percentage="0.5" current-text="10" goal-text="Goal: 20" type-text="Visits" caption="New visits per day"></d3-task-planner>
+<d3-progress-meter class="custom" radius="100" percentage="0.5" current-text="10" goal-text="Goal: 20" type-text="Visits" caption="New visits per day"></d3-progress-meter>
 ```
 
 ## License
