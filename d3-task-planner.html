@@ -98,7 +98,22 @@ A chart that shows tasks as draggable dots
 
 				const recalculateSchedule = (taskId, newDeadline) => {
 					const format = d3.timeFormat('%Y-%m-%d');
+					const oldDeadline = new Date(this._schedule.deadlines[taskId]);
 					this._schedule.deadlines[taskId] = format(new Date(newDeadline));
+					// Move also other deadlines
+					// that are after the current one
+					// TODO: simulates what task-scheduler library does
+					const blockedInterval = newDeadline.getTime() - oldDeadline.getTime();
+					Object.keys(this._schedule.deadlines).forEach(taskKey => {
+						const previousDeadline = new Date(this._schedule.deadlines[taskKey]);
+						if(new Date(previousDeadline) > new Date(oldDeadline)) {
+							this._schedule.deadlines[taskKey] = format(new Date(previousDeadline).getTime() + blockedInterval);
+						}
+					});
+					// Move also end
+					const oldEnd = this._schedule.end;
+					this._schedule.end = format(new Date(oldEnd).getTime() + blockedInterval);
+
 					return this.buildInputData();
 				};
 
@@ -141,7 +156,7 @@ A chart that shows tasks as draggable dots
 				// Add vertical line on today's date
 				//const today = new Date();
 				// Debug
-				const today = new Date('2018-01-25T23:00:00.000Z');
+				const today = new Date('2018-01-21T23:00:00.000Z');
 				svg.append('line')
 					.attr('x1', x(today))
 					.attr('y1', 0)
@@ -158,6 +173,8 @@ A chart that shows tasks as draggable dots
 						// Move the dots
 						d3.select(this)
 							.attr('cx', x(d.date));
+
+						recalculateSchedule(d.name, d.date);
 
 						// Redraw line connecting dots
 						svg.select('path').attr('d', valueline(inputData));
