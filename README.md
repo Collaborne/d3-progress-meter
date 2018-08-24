@@ -1,4 +1,6 @@
-d3-progress-meter [![Bower version](https://badge.fury.io/bo/d3-progress-meter.svg)](http://badge.fury.io/bo/d3-progress-meter) [![Travis state](https://travis-ci.org/Collaborne/d3-progress-meter.svg?branch=master)](https://travis-ci.org/Collaborne/d3-progress-meter) [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/Collaborne/d3-progress-meter)
+d3-progress-meter [![Bower version](https://badge.fury.io/bo/d3-progress-meter.svg)](http://badge.fury.io/bo/d3-progress-meter) [![Travis state](https://travis-ci.org/Collaborne/d3-progress-meter.svg?branch=master)](https://travis-ci.org/Collaborne/d3-progress-meter) [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/Collaborne/d3-progress-meter)  
+[![Published on Vaadin  Directory](https://img.shields.io/badge/Vaadin%20Directory-published-00b4f0.svg)](https://vaadin.com/directory/component/Collaborned3-progress-meter)
+[![Stars on vaadin.com/directory](https://img.shields.io/vaadin-directory/star/Collaborned3-progress-meter.svg)](https://vaadin.com/directory/component/Collaborned3-progress-meter)
 =================
 
 `d3-progress-meter` is an animated chart that shows the progress as a meter. The web component is built with [Polymer 1.x](https://www.polymer-project.org) and [D3](http://d3js.org).
